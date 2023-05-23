@@ -4,7 +4,7 @@
 
 - Vue 인스턴스나 컴포넌트가 생성되고 소멸되기까지의 단계
 - 각 단계에서 실행되는 함수들을 Lifecycle Hook이라고 함
-- Lifecycle의 flowchart
+- Lifecycle의 Flowchart
 
   ![ff](image/vue_lifecycle_hook.png)
   <br>
