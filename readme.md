@@ -18,7 +18,7 @@
 <br>
 
 ## 3. Contributor
-|nickname||Chop|Jin|Lyn|Json|
+|nickname|Dawn|Chop|Jin|Lyn|Json|
 |--|--|--|--|--|--|
 |작성자|김종혁|김현영|김현진|최예린|하진우|
 
