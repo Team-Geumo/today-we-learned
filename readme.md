@@ -9,7 +9,7 @@
 ## 2. Git Convention
 - 폴더명 : <b>yyyy.mm</b>
   - ex) `2023.05`
-- 파일명 : **yymmdd_nickname_title.md**
+- 파일명 : **yymmdd_title.md**
   - ex) `230523_react_native_app_icon_넣는_방법.md`
 
 - commit : **yymmdd_nickname**
