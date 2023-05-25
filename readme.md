@@ -22,7 +22,7 @@
 
 ## 3. Contributor
 
-| nickname | Dawn   | Chop   | Jin    | Lyn    | Json  |
+| nickname | Dawn   | Chop   | Jin    | Lyn    | Jason  |
 | -------- | ------ | ------ | ------ | ------ | ------ |
 | 작성자   | 김종혁 | 김현영 | 김현진 | 최예린 | 하진우 |
 
