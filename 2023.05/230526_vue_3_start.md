@@ -8,7 +8,7 @@
   
   - create-vue를 하게되면 테스트 지원 및 몇 가지 옵션 기능이 프롬프트에 표시합니다.
     
-    ![loading-ag-266](C:\Users\gkwls\OneDrive\바탕%20화면\Study\today-we-learned\2023.05\image\create-vue-option.png)
+    ![loading-ag-266](./image/create-vue-option.png)
 
 - 필요 없다면 No로 두고 Enter 필요하다면 Yes를 선택하면 된다.
 
