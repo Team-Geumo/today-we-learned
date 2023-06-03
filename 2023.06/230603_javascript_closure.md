@@ -6,27 +6,20 @@
 - 클로저 안에 정의된 함수는 만들어진 환경을 기억함
 - 흔히 함수 내에서 함수를 정의하고 사용하면 클로저라고 하지만, 대개는 정의한 함수를 리턴하고 사용은 바깥에서 하게됨
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
+```js
 function getClosure() {
-var text = 'variable 1';
-return function() {
-return text;
-};
+  var text = "variable 1";
+  return function () {
+    return text;
+  };
 }
 
 var closure = getClosure();
 console.log(closure()); // 'variable 1'
-위에서 정의한 getClosure()는 함수를 반환하고, 반환된 함수는 getClosure() 내부에서 선언된 변수를 참조하고 있다. 또한 이렇게 참조된 변수는 함수 실행이 끝났다고 해서 사라지지 않았고, 여전히 제대로 된 값을 반환하고 있는 걸 알 수 있다.
+```
 
-여기서 반환된 함수가 클로저인데, MDN에서 정의된 내용에서도 말했듯 환경을 기억하고 있는 것처럼 보인다. 아직은 잘 이해가 되지 않으니, 다른 예제도 한 번 보겠다.
+- 위에서 정의한 getClosure()는 함수를 반환하고, 반환된 함수는 getClosure() 내부에서 선언된 변수를 참조함
+- 또한 이렇게 참조된 변수는 함수 실행이 끝났다고 해서 사라지지 않았고, 여전히 제대로 된 값을 반환함
 
 ```js
 var base = "Hello, ";
