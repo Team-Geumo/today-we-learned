@@ -59,21 +59,21 @@ void main() {
     bool isEmpty(String string) => string.length == 0;
 
     main() {
-        isEmpty(null); // 컴파일 에러 : null은 length가 없가 때문에 
+        isEmpty(null); // error : null은 length가 없가 때문에 
     }
     ```
 - null safety가 있을 때
     ```dart
-        void main() {
-            String? horong = 'horong' // horong이 null이 될 수도 있음을 선언
-            nico = null;
-            // nico.length 라는 코드를 치면 컴파일 전에 에러를 띄워줌 => null type을 고려해 처리해주어야 함
-            // 1. if문 사용하기
-            if(horong != null) {
-                print(horong.length)
-            }
-            // 2. ?로 null을 제외하기
-            print(horong?.length)
+    void main() {
+        String? horong = 'horong' // horong이 null이 될 수도 있음을 선언
+        nico = null;
+        // nico.length 라는 코드를 치면 컴파일 전에 에러를 띄워줌 => null type을 고려해 처리해주어야 함
+        // 1. if문 사용하기
+        if(horong != null) {
+            print(horong.length)
+        }
+        // 2. ?로 null을 제외하기
+        print(horong?.length)
         }
     ```
 
@@ -110,6 +110,12 @@ void main() {
     - API는 컴파일이 되어야만 그 값을 알 수 있음
     - 따라서, final이나 late로 지정
     - 앱을 컴파일 하기 전에 알 수 있는 값만 const로 자정
+```dart
+void main() {
+    const API_KEY = "aaa"; // 적합
+    const data = apiDataFetching().. // 부적합 : 컴파일 전에는 값을 알 수 없음
+}
+```
 
 
 
