@@ -15,7 +15,7 @@ void main() {
 ```dart
 String sayHello(String name) => "Hello $name nice to meet you!";
 ```
-## Positional Parameter
+## Positional Parameters
 - 함수에 사용되는 변수를 순서대로 입력해야 함
 - 변수가 들어가는 순서를 기억해야한다는 단점이 있음
 - 모든 변수는 필수로 값이 들어가야 함
@@ -29,9 +29,11 @@ void main() {
 }
 ```
 
-## Named Parameter
-- named parameter를 사용하면 변수의 이름과 값을 key-value 형태로 입력할 수 있음
+## Named Parameters
+- named parameters를 사용하면 변수의 이름과 값을 key-value 형태로 입력할 수 있음
+- 하지만 map의 개념이 아니므로 주의
 - 변수가 들어가는 순서를 기억하지 않아도 됨
+- 함수에 인자를 적을 때, 
 ```dart
 String sayHello({
     String name,
@@ -42,7 +44,10 @@ String sayHello({
 }
 
 void main() {
-    print(sayHello(name: "horong", age : 20, country : "USA"));
+    print(sayHello(name : "horong", age : 20, country : "USA"));
+    // key-value 형태지만 map이 아니므로 작성에 주의
+    // "name" : "horong" (X)
+    // name : "horong" (O)
 }
 ```
 **만약 유저가 이름을 적지 않는다면?**
@@ -69,10 +74,10 @@ String sayHello({
     return "Hello $name, you are $age, and you come from $country";
 }
 ```
-- 비교 : positional parameter은 기본값이 required임
+- 비교 : positional parameters는 기본값이 required임
 
-## Optional Positional Parameter
-- positional parameter에서 변수를 옵션으로 설정하기
+## Optional Positional Parameters
+- positional parameters에서 변수를 옵션으로 설정하기
 - 자주 사용하는 방법은 아님
 ```dart
 String sayHello(String name, int age,
