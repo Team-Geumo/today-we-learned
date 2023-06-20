@@ -1,2 +1,0 @@
-money = int(input())
-stokcs = [[]]
