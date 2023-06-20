@@ -1,0 +1,2 @@
+money = int(input())
+stokcs = [[]]
