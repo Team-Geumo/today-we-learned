@@ -28,3 +28,4 @@
 - VSCode 사용하기
     - Flutter, Dart 설치 후 사용
     - Flutter Extension 설치 추천 (DEBUG CONSOLE)
+- Android Studio나 IntelliJ에서도 사용할 수 있음
