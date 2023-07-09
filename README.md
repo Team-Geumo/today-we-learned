@@ -1,5 +1,5 @@
 # Today We Learned
-![Today We Learned](image/today_we_learned.png)
+![Today We Learned](categories/_image/today_we_learned.png)
 
 ## 1. Team Rules
 
