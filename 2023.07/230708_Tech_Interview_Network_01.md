@@ -1,0 +1,85 @@
+# Tech Interview Network 01
+
+## **01 쿠키와 세션의 차이에 대해 설명해 주세요.**
+
+쿠키는 클라이언트에 저장되지만, 세션은 서버에 저장되어 서버의 자원을 사용합니다. 쿠키는 만료시간 동안 파일로 저장되어서 브라우저를 종료해도 정보가 남아있지만, 세션은 브라우저가 종료되면 만료시간에 상관없이 삭제됩니다.
+
+https://code-lab1.tistory.com/298
+
+### **➕ 세션 방식의 로그인 과정에 대해 설명해 주세요.**
+
+- 사용자가 로그인을 하면 인증 정보를 서버의 세션 저장소에 저장하고, 사용자는 세션 ID를 발급합니다. 세션 ID는 브라우저에 쿠키 형태로 저장되지만 실제 인증 정보는 서버에 저장되어있습니다. 브라우저는 인증 절차를 마친 이후의 요청마다 HTTP 쿠키 헤더에 세션 ID를 담아서 서버로 전송합니다. 서버는 요청을 전달받고, 세션 ID에 해당하는 세션 정보가 세션 저장소에 존재한다면 해당 사용자를 인증된 사용자로 판단하게 됩니다.
+- https://hudi.blog/session-based-auth-vs-token-based-auth/
+
+### **➕ HTTP의 특성인 Stateless에 대해 설명해 주세요.**
+
+- Stateless는 서버가 클라이언트의 이전 상태를 보존하지 않는다는 의미입니다. 즉 클라이언트가 이전 요청과 같은 데이터를 원한다고 하더라도 다시 서버에 연결을 하여 동일한 요청을 시도해야만 합니다.
+- https://hyuntaeknote.tistory.com/3
+
+### **➕ Stateless의 의미를 살펴보면, 세션은 적절하지 않은 인증 방법 아닌가요?**
+
+- 사용자의
+- [https://velog.io/@gwontaeyong/Session-그리고-Stateless](https://velog.io/@gwontaeyong/Session-%EA%B7%B8%EB%A6%AC%EA%B3%A0-Stateless)
+
+### **➕ 규모가 커져 서버가 여러 개가 된다면, 세션을 어떻게 관리할 수 있을까요?**
+
+- 서버가 여러 개가 되어 여러 세션 저장소가 생긴다면 1. 스티키 세션(Sticky Session) 방식으로 한 사용자는 동일한 서버에만 사용할 수 있도록 하거나, 2. 세션 클러스터링(Session Clusturing) 방식을 사용해 한 세션의 변경 사항을 다 세션에 공유하거나, 3. 별도의 세션 스토리지를 사용해 세션을 공유할 수 있도록 하는 방법을 사용할 수 있습니다.
+- https://hyuntaeknote.tistory.com/6
+
+## **02 HTTP 응답코드에 대해 설명해 주세요.**
+
+HTTP 코드는 특정 HTTP 요청이 성공적으로 완료되었는지 알려주는 코드입니다. 200번대는 성공, 300번대는 리다이렉션, 400번대는 클라리언트 에러, 500번대는 서버 에러입니다.
+
+[https://velog.io/@geeneve/자주-사용하는-HTTP-상태-코드](https://velog.io/@geeneve/%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-HTTP-%EC%83%81%ED%83%9C-%EC%BD%94%EB%93%9C)
+
+### **➕ 401 (Unauthorized) 와 403 (Forbidden)은 의미적으로 어떤 차이가 있나요?**
+
+- 401은 클라이언트가 인증되지 않았거나 유효한 인증 정보가 부족해 요청이 거부되었다는 의미고, 403은 서버가 해당 요청을 이해했지만 권한이 없어서 요청이 거부되었다는 의미입니다.
+
+### **➕ 200 (ok) 와 201 (created) 의 차이에 대해 설명해 주세요.**
+
+- 200은 요청이 성공적으로 진행되었다는 포괄적인 의미로 사용되고, 201은 성공적으로 처리된 결과 서버에 새로운 리소스가 생겼을 때 사용하는 코드입니다. POST, PUT 등의 요청에 대한 응답으로 주로 사용됩니다.
+
+## **03 HTTP Method 에 대해 설명해 주세요.**
+
+### **➕ HTTP Method의 멱등성에 대해 설명해 주세요.**
+
+- 여러 번 동일한 요청을 보냈을 때, 서버에 미치는 의도된 영향이 동일한 경우를 말합니다.
+
+### **➕ GET과 POST의 차이는 무엇인가요?**
+
+- GET은 서버의 리소스에서 데이터를 요청할 때, POST는 서버의 리소스를 새로 생성하거나 업데이트할 때 사용합니다. GET 은 URL 파라미터에 요청하는 데이터를 담아 보내기 때문에 HTTP 메시지에 body가 없다. POST 는 body 에 데이터를 담아 보내기 때문에 HTTP 메시지에 body가 존재합니다.
+- [https://brilliantdevelop.tistory.com/33](https://velog.io/@dyunge_100/Spring-Thread-Pool)
+
+### **➕ POST와 PUT, PATCH의 차이는 무엇인가요?**
+
+- **`PUT`과 `POST`의 차이는 멱등성으로, `PUT` 메서드는 멱등성을 가집니다.** 즉, `PUT`은 같은 객체를 여러 번 보내도 한 번만 생성되거나 계속해서 같은 값을 보내줍니다. 또한 생성한 URL 개체의 이름을 명시적으로 지정한 경우에는 `PUT`을 사용하고, 서버가 결정하도록 한다면 `POST`를 사용하는 게 더 낫습니다. HTTP `PUT` 메서드는 문서 전체의 완전한 교체만을 허용하지만, `PATCH` 메서드는 `PUT` 메서드와 달리 부분적인 교체를 할 때 사용하는 메서드입니다. 또한 `PUT`은 새로운 자원을 생성하지만, PATCH는 새로운 자원을 생성하진 않습니다.
+- https://velog.io/@dyunge_100/Spring-Thread-Pool
+
+### **➕ HTTP 1.1 이후로, GET에도 Body에 데이터를 실을 수 있게 되었습니다. 그럼에도 불구하고 왜 아직도 이런 방식을 지양하는 것일까요?**
+
+- 가장 큰 이유는 기존 구현체들의 경우 body를 담아 GET을 보내면 거절당할 수 있기 때문입니다.
+- 캐시 및 보안 문제를 일으킬 수 있기 때문입니다. GET 요청을 간단하고 예측 가능하게 유지함으로써, 이러한 시스템이 캐시를 보다 쉽게 관리하고 검색 GET 요청은 종종 서버 로그, 브라우저 히스토리 및 다른 시스템에서 기록됩니다. 데이터를 URL에 유지함으로써, 이를 쉽게 볼 수 있으며, 제3자에게 잠재적으로 가로챌 수 있습니다.
+- https://velog.io/@sejin3319/HTTP-HTTP-Method
+- https://cl8d.tistory.com/63
+
+## **04 HTTP에 대해 설명해 주세요.**
+
+HTTP는 Hyper-Text Transfer Protocol의 약자로, Hypertext인 HTML을 주고받기 위한 규약(protocol)입니다. HTTPS에서 마지막의 S는 over **S**ecure socket Layer의 약자로 HTTP에서 보안이 강화된 버전이다. SSL 프로토콜 위에서 돌아가는 HTTP 프로토콜
+
+[https://velog.io/@dong5854/HTTPS와-SSL인증서-대칭키-공개키비대칭키](https://velog.io/@dong5854/HTTPS%EC%99%80-SSL%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%8C%80%EC%B9%AD%ED%82%A4-%EA%B3%B5%EA%B0%9C%ED%82%A4%EB%B9%84%EB%8C%80%EC%B9%AD%ED%82%A4)
+
+### **➕ 공개키와 대칭키에 대해 설명해 주세요.**
+
+- 공개키 방식은 두개의 키를 갖게 되는데 A키를 사용해 암호화를 하면 B키로 복호화를 할수 있고, B키로 암호화를 하면 A키로 복호화를 할 수 있는 방식입니다. 즉, 키A를 통해 암호화한 내용은 키A를 이용해 복호화 하는 것은 불가능하고 키A와 쌍을 이루는 키B를 사용해야만 복호화가 가능합니다. 두개의 키 중 하나를 비밀키로 하여 자신만이 가지고 있고, 나머지를 공개키로 지정하여 대중에게 공개합니다.
+- 대칭키는 암호화에 사용되는 키와 복호화에 사용되는 키가 동일일 암호화 기법입니다.
+- [https://velog.io/@dong5854/HTTPS와-SSL인증서-대칭키-공개키비대칭키](https://velog.io/@dong5854/HTTPS%EC%99%80-SSL%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%8C%80%EC%B9%AD%ED%82%A4-%EA%B3%B5%EA%B0%9C%ED%82%A4%EB%B9%84%EB%8C%80%EC%B9%AD%ED%82%A4)
+
+### **➕ 왜 HTTPS Handshake 과정에서는 인증서를 사용하는 것 일까요?**
+
+- [https://velog.io/@ann0905/HTTPS-2.-HTTPS와-SSL-Handshake](https://velog.io/@ann0905/HTTPS-2.-HTTPS%EC%99%80-SSL-Handshake)
+
+### **➕ SSL과 TLS의 차이는 무엇인가요?**
+
+- SSL(Secure Sockets Layer)과 TLS(Transport Layer Security)의 차이는 우선 TLS가 SSL의 업그레이드 된 버전이며, TLS가 SSL보다 알림 메시지의 유형이 다양하며 이 알림 메시지까지 암호화 됩니다. 그리고 메시지 인증은 SSL은 MAC, TLS는 HMAC을 사용하고, TLS에서는 고급화 된 암호화 알고리즘을 사용한다는 차이점이 있습니다.
+- https://aws.amazon.com/ko/compare/the-difference-between-ssl-and-tls/
