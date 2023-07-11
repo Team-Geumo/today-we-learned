@@ -25,6 +25,7 @@
 - await http.get(url)의 type은 Response : 완료된 후에는 Response를 반환하기 때문
 
 ### 코드 예시
+- 오늘의 웹툰 목록을 조회해 콘솔에 출력하는 class
 ```dart
 import 'package:http/http.dart' as http;
 
