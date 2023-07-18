@@ -7,7 +7,7 @@
 
 ## 2.2 자바스크립트의 표준화
 **배경 및 필요성**
-- 마이크로소프트에서 자바스크립트의 파생 버전인 JScript를 만들어 인터넷 익스플로러에 탑재함
+- 마이크로소프트에서 자바스크립트의 파생 버전인 **JScript**를 만들어 인터넷 익스플로러에 탑재함
 - 자바스크립트와 JScript는 서로 표준화 되지 못하고 자사 브라우저에서만 동작하는 기능을 경쟁적으로 추가
 - **크로스 브라우징 이슈**가 발생해 모든 브라우저에서 정상적으로 동작하는 웹페이지를 개발하기 어려워짐
 - 자바스크립트의 파편화를 방지하고 모든 브라우저에서 정상적으로 동작하는 표준화된 자바스크립트의 필요성이 대두됨
@@ -23,12 +23,107 @@
 |--|--|--|
 |ES1|1997|초판|
 |ES2|1998|ISO/IEC 16262 국제 표준과 동일한 규격을 적용|
-|ES3|1999|정규 표현식, try ... catch|
-|ES4|Abandoned|class(static, final, private, protected, public, prototype, generic function), interface, strict typing, E4X|
-|ES5|2009|HTML5와 함께 출현한 표준안<br>JSON, strict mode, 접근자 프로퍼티, 프로퍼티 어트리뷰트 제어, 향상된 배열 조작 기능(forEach, map, filter, reduce, some, every)|
-|ES6|2015|let/const, 클래스, 화살표 함수, 템플릿 리터럴, 디스트럭처링 할당, 스프레드 문법, rest 파라미터, 심벌, 프로미스, Map/Set, 이터러블, for ... of, 제너레이터, Proxy, 모듈 import/export|
-|ES7|2016|지수 연산자(**), Array.prototype.includes,<br> String.prototype.includes|
-|ES8|2017|async/await, Object 정적 메서드(values, entries, getOwnPropertyDescriptors)|
-|ES9|2018|Object rest/spread 프로퍼티, Promise.prototype.finally, async generator, for awiat ... of|
-|ES10|2019|Object.fromEntries, Array.prototype.flat, Array.prototype.flatMap, optional catch binding|
-|ES11|2020|String.prototype.matchAll, BigInt, globalThis, Promise.allSettled, null 병합 연산자, 옵셔널 체이닝 연산자, for ... in enumeration order|
+|ES3|1999|정규 표현식, `try ... catch`|
+|ES4|Abandoned|class(`static`, `final`, `private`, `protected`, `public`, `prototype`, `generic function`), interface, strict typing, E4X|
+|ES5|2009|HTML5와 함께 출현한 표준안<br>JSON, strict mode, 접근자 프로퍼티, 프로퍼티 어트리뷰트 제어, 향상된 배열 조작 기능(`forEach`, `map`, `filter`, `reduce`, `some`, `every`)|
+|ES6|2015|`let`/`const`, 클래스, 화살표 함수, 템플릿 리터럴, 디스트럭처링 할당, 스프레드 문법, rest 파라미터(`...`), `Symbol`, `Promise`, `Map`/`Set`, 이터러블, `for ... of`, 제너레이터, `Proxy`, 모듈 `import`/`export`|
+|ES7|2016|지수 연산자(`**`), `Array.prototype.includes`,<br> `String.prototype.includes`|
+|ES8|2017|`async`/`await`, Object 정적 메서드(`Object.values`, `Object.entries`, `Object.getOwnPropertyDescriptors`)|
+|ES9|2018|Object `rest`/`spread` 프로퍼티, `Promise.prototype.finally`, async generator, `for awiat ... of`|
+|ES10|2019|`Object.fromEntries`, `Array.prototype.flat`, `Array.prototype.flatMap`, optional catch binding|
+|ES11|2020|`String.prototype.matchAll`, `BigInt`, `globalThis`, `Promise.allSettled`, null 병합 연산자, 옵셔널 체이닝 연산자, `for ... in enumeration order`|
+
+## 2.3 자바스크립트 성장의 역사
+초창기 자바스크립트는 웹페이지의 보조적인 기능을 수행하기 위해 한정적인 용도로 사용됨<br>
+대부분의 로직은 웹 서버에서 실행되고 브라우저는 서버로부터 전달받은 HTML, CSS를 단순히 렌더링하는 수준에 그침<br>
+
+**렌더링(rendering)**
+- HTML, CSS, 자바스크립트로 작성된 문서를 해석해서 브라우저에 시각적으로 출력하는 과정
+- SSR(Server Side Rendering) : 서버에서 데이터를 HTML로 변환하여 브라우저에 전달하는 과정
+
+### 2.3.1 Ajax (1999)
+자바스크립트를 이용해 서버와 브라우저가 비동기 방식으로 데이터를 교환할 수 있는 통신 기능<br>
+
+**기존 웹페이지 동작 방식**
+- 완전한 HTML 코드를 서버로부터 전송받아 웹페이지 전체를 렌더링하는 방식으로 동작
+- 변경할 필요가 없는 부분까지 다시 전송받기 때문에 성능면에서 불리
+- 화면 전환 시 순간적으로 깜빡이는 현상이 발생
+
+**Ajax 등장 이후**
+- 서버로부터 필요한 데이터만 전송받아서 변경이 필요한 부분만 한정적으로 렌더링하는 **CSR**(Client Side Rendering), **SPA**(Single Page Application) 개발이 가능해짐
+- G-mail (2004) : Ajax를 이용해 SPA로 만든 최초의 웹
+- Google Maps (2005) : Ajax를 사용한 부드러운 화면 전환 효과를 보여주며 웹 애플리케이션 프로그래밍 언어로서 자바스크립트의 가능성을 확인하는 계기가 됨
+
+### 2.3.2 jQuery (2006)
+HTML 속 클라이언트 사이드 스크립트 언어를 단순화하도록 설계된 브라우저 호환성이 있는 자바스크립트 라이브러리 (2006)
+- DOM(Document Object Model)을 보다 쉽게 제어할 수 있게 됨
+- 크로스 브라우징 이슈를 어느 정도 해결
+
+### 2.3.3 V8 자바스크립트 엔진 (2008)
+웹 브라우저를 만드는 데 기반을 제공하는 오픈 소스 자바스크립트 엔진
+- 자바스크립트가 데스크톱 애플리케이션과 유사한 사용자 경험을 제공할 수 있는 웹 애플리케이션 프로그래밍 언어로 정착
+- 기존에 웹 서버에서 수행되던 로직들이 대거 클라이언트(브라우저)로 이동하면서 웹 애플리케이션 개발에서 프론트엔드 영역이 주목받게 됨
+
+### 2.3.4 Node.js (2009)
+구글 V8 자바스크립트 엔진으로 빌드되어 **브라우저로부터 독립한 자바스크립트 런타임 환경**<br>
+Node.js의 등장으로 자바스크립트는 서버 사이드 애플리케이션 개발에서도 사용될 수 있는 범용 프로그래밍 언어가 됨<br>
+
+**기능 및 특징**
+- 주로 서버 사이드 애플리케이션 개발에 사용되며 이에 필요한 모듈, 파일 시스템, HTTP 등 **빌트인 API**를 제공
+- **비동기 I/O**를 지원하며 단일 스레드 이벤트 루프 기반으로 동작함으로써 요청 처리 성능이 좋음
+- 데이터를 실시간으로 처리하기 위해 I/O가 빈번하게 발생하는 SPA(Single Page Application)에 적합, CPU 사용률이 높은 애플리케이션에는 권장하지 않음
+
+
+### 2.3.5 SPA 프레임워크 / 라이브러리
+개발 규모가 커지면서 CBD(Component Based Development) 방법론을 기반으로 하는 SPA 프레임워크 / 라이브러리가 등장함
+
+**Angular (2009)**
+- 구글에서 지원하는 SPA 프레임 워크
+- **양방향 바인딩** (model <-> view)
+- 2.0부터 AngularJS(JS 기반)에서 **Angular(TS 기반)**로 이름 변경
+
+**React (2013)**
+- 메타에서 지원하는 SPA 라이브러리
+- **단방향 바인딩** (model -> view)
+- **Virtual DOM**
+- JSX(JavaScript XML) 사용
+
+**Vue.js (2014)**
+- 개인이 개발한 SPA 프레임워크
+- Angular의 **양방향 바인딩**과 React의 **Virtual DOM**을 채택
+- 비교적 쉬운 문법
+
+## 2.4 자바스크립트와 ECMAScript
+**ECMAScript**
+- 자바스크립트의 표준 사양인 ECMA-262
+- 프로그래밍 언어의 값, 타입, 객체와 프로퍼티, 함수, 표준 빌트인 객체 등 핵심 문법을 규정
+- 각 브라우저 제조사는 ECMAScript 사양을 준수해 브라우저에 내장되는 자바스크립트 엔진을 구현
+
+**자바스크립트**
+- **ECMAScript** + **클라이언트 사이드 Web API**를 아우르는 개념
+- 클라이언트 사이드 Web API는 월드 와이드 웹 콘소시엄에서 별도의 사양으로 관리
+
+## 2.5 자바스크립트의 특징
+HTML, CSS와 함께 웹을 구성하는 요소중 하나로서 웹 브라우저에서 동작하는 유일한 프로그래밍 언어<br>
+자바스크립트는 **인터프리터 언어**이자 **멀티 패러다임 프로그래밍 언어**<br>
+
+**컴파일러 언어 vs 인터프리터 언어**
+|컴파일러 언어|인터프리터 언어|
+|---|---|
+|코드가 실행되기 전 단계인 컴파일 타임에 소스코드 전체를 한번에 머신코드로 변환한 후 실행|코드가 실행되는 단계인 런타임에 한 줄씩 중간 코드인 바이트코드로 변환한 후 실행|
+|실행 파일을 생성|실행 파일을 생성하지 않음|
+|컴파일 단계와 실행 단계가 분리되어 있음<br>명시적 컴파일 단계를 거치고 명시적으로 실행 파일을 실행|인터프리트 단계와 실행 단계가 분리되어 있지 않음<br>인터프리터는 한 줄씩 바이트코드로 변환하고 즉시 실행|
+|실행에 앞서 컴파일을 단 한 번 수행|코드가 실행될 때마다 인터프리트 과정을 반복 수행|
+|컴파일과 실행 단계가 분리되어있어 코드 실행 속도가 빠름|인터프리트 단계와 실행 단계가 분리되어있지 않고 반복 수행되어 코드 실행 속도가 비교적 느림|
+
+**멀티 패러다임 프로그래밍 언어**
+- 하나 이상의 프로그래밍 패러다임을 지원하는 프로그래밍 언어
+- 자바스크립트의 패러다임
+    1. **명령형**(imperative)
+    2. **함수형**(functional)
+    3. **프로토타입 기반**(prototype-based) **객체 지향**
+
+## 2.6 ES6 브라우저 지원 현황
+IE를 제외한 대부분의 모던 브라우저가 ES6를 지원<br>
+브라우저에서 지원하지 않는 최신 기능을 사용하기 위해서는 사양을 다운그레이드 해야 함<br>
+**트랜스파일러를 사용한 사양 다운그레이드** : [**Babel과 Webpack을 이용한 ES6+/ES.NEXT 개발 환경 구축**]()
