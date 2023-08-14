@@ -53,6 +53,36 @@ module.exports = {
 };
 ```
 
+## craco 설정 후 `ReferenceError: React is not defined` 에러가 발생할 경우
+
+### 원인
+
+- CRA 버전 17 이후에서는 JSX Transform의 업데이트로 인해 `import React from 'react';`를 쓰지 않아도 되게 변경되었음
+- 그러나 craco나 다른 설정을 사용할 때, 이 설정이 해당 변화를 고려하지 않는 경우가 발생할 수 있음
+
+### 해결 방법
+
+1. 명시적으로 선언하기
+
+   ```jsx
+   import React from 'react';
+   ```
+
+2. babel plugin 설치 후 설정하기
+
+- plugin 설치 : `npm i @babel/plugin-transform-react-jsx` or `yarn add @babel/plugin-transform-react-jsx`
+- craco.config.js에 plugin 추가
+
+  ```js
+  module.exports = {
+    babel: {
+      plugins: [
+        ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
+      ],
+    },
+  };
+  ```
+
 ## 회고
 
 - 두 가지 방법을 모두 사용해보았음
